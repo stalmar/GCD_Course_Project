@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title></title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h1></h1>
+
+<h1>Getting and Cleaning Data project</h1>
+
+<h1>The goal of the project</h1>
+
+<p>The goal of the project was to create one tidy data set out of several
+data sets, containing data collected from the accelerometers from the Samsung Galaxy S smartphone.</p>
+
+<p>The data was splitted into training and test sets. Description of activities measured and variables estimated from them, as well as names of activities were dispersed among many text files.</p>
+
+<p>In order to complete the task one had to merge data sets, include propoer variables and activities names, rename them for better readability and summarize the data computing the means of extracted variables (which were means themselves) according to subject and activity type.</p>
+
+<h1>The original data sets and experiment design.</h1>
+
+<h2>Source and licence</h2>
+
+<p>The data for the project were taken from [here][<a href="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip">https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip</a> ]</p>
+
+<p>The full description of data is avaliable [here][<a href="http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones">http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones</a> ]</p>
+
+<p>Use of this dataset in publications must be acknowledged by referencing the following publication [1] </p>
+
+<p>[1] Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012</p>
+
+<p>This dataset is distributed AS-IS and no responsibility implied or explicit can be addressed to the authors or their institutions for its use or misuse. Any commercial use is prohibited.</p>
+
+<h2>Experiment design</h2>
+
+<p>The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, authors captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz.The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data.</p>
+
+<p>The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain.</p>
+
+<h2>Variables</h2>
+
+<p>In original data set for each record there were:</p>
+
+<ul>
+<li>Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration.</li>
+<li>Triaxial Angular velocity from the gyroscope. </li>
+<li>A 561-feature vector with time and frequency domain variables. </li>
+<li>Its activity label. </li>
+<li>An identifier of the subject who carried out the experiment.</li>
+</ul>
+
+<p>For the project&#39;s use we only utilized variables which described means or standard deviation, which we identified as having either &ldquo;mean&rdquo; or &ldquo;std&rdquo; in their names. </p>
+
+<p>All the variables, finally used (averaged) in the project&#39;s course are described in GCD_Codebook.</p>
+
+<p>All original features were normalized and bounded within [-1,1].Since our features are averages of them, the same holds true.</p>
+
+<p>Every row in the tidy data set contains subject id, activitity type and the means of each variable on the pair (subject id, activitity type).</p>
+
+<h1>Data and code</h1>
+
+<p>Repository for the project contains:</p>
+
+<ul>
+<li>raw data set UCI HAR Dataset, described in details in its own Readme</li>
+<li>script run_analysis.R, which performs all necessary tasks</li>
+<li>GCD_Codebook, describing all the variables used</li>
+<li>this GCD_readme, descrining context, data and run_analysis.R script</li>
+</ul>
+
+<h1>run_analysis R script</h1>
+
+<p>Assuming that the reader is in the right working directory, script first downloades the data from web, recording the time, uzips it to the working directory and removes the zipped file. </p>
+
+<p>Having dowloaded them on disk, script loades into R train and test: activity labels, main activity data and data identyfing subjects performing activities.</p>
+
+<p>Additional tables which include features dictionary (variables names) and activities dictionary (activities names) are also loaded.</p>
+
+<p>After merging these sets and renaming variables and activities according to dictonaries, we extract only variables describing means or standard deviation, excluding variables containing meanFreq.</p>
+
+<p>Then script changes names of variables slightly, removing special signs (including &ldquo;-&rdquo; and &ldquo;()&rdquo;) and changing some lower to upper cases, to make variables names more readable.</p>
+
+<p>As next step we aggregate the data to take mean of all the extracted variables with respect to subject and activity type and change the variable name again to indicate that they are next level means.</p>
+
+<p>Finally, we export tidy data set as tidySubjectActivitiesData.txt. It can be loaded into R with read.table(), keeping header = TRUE.</p>
+
+</body>
+
+</html>
