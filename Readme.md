@@ -53,10 +53,13 @@ Every row in the tidy data set contains subject id, activitity type and the mean
 
 Repository for the project contains:
 
-- raw data set UCI HAR Dataset, described in details in its own Readme
 - script run_analysis.R, which performs all necessary tasks
-- GCD_Codebook, describing all the variables used
-- this GCD_readme, descrining context, data and run_analysis.R script
+- Codebook, describing all the variables used
+- this Readme, describing context, data and run_analysis.R script
+
+# Packages
+
+Script uses two packages: "lattice" and "functional". 
 
 # run_analysis R script
 
